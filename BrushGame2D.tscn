@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bbussfxgply5p"]
+
+[ext_resource type="Texture2D" uid="uid://y5rbca2ylgao" path="res://Art/sketchful-1771301979138-2.png" id="1_m8gg0"]
+
+[node name="Node2D" type="Node2D" unique_id=1334366829]
+
+[node name="Sketchful17713019791382" type="Sprite2D" parent="." unique_id=915550012]
+position = Vector2(425.1651, 385.9688)
+scale = Vector2(1.2318205, 1.1898957)
+texture = ExtResource("1_m8gg0")

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://b45gmjkhuex7g"]
+
+[ext_resource type="Script" uid="uid://cxn6b2qp7bqei" path="res://Brush Game/brush_game.gd" id="1_3iv54"]
+[ext_resource type="ArrayMesh" uid="uid://duj6747nq4qsk" path="res://Art/Grass/grass.res" id="1_m8gg0"]
+[ext_resource type="MultiMesh" uid="uid://bad7ces7o1fxs" path="res://Brush Game/tall_grass_multimesh.tres" id="1_m8yhw"]
+[ext_resource type="ArrayMesh" uid="uid://r2imjo7o2734" path="res://Art/Grass/grass2.res" id="2_3dqay"]
+[ext_resource type="MultiMesh" uid="uid://b2dlxmdqsigyx" path="res://Brush Game/short_grass_multimesh.tres" id="3_xhtp5"]
+[ext_resource type="PackedScene" uid="uid://cegtv7yh4oytm" path="res://touch_camera.tscn" id="6_5ke1k"]
+[ext_resource type="PackedScene" uid="uid://dxwa5qsserbbt" path="res://Brush Game/horse.tscn" id="6_xhtp5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8gg0"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_3dqay"]
+sky_material = SubResource("ProceduralSkyMaterial_m8gg0")
+
+[sub_resource type="Environment" id="Environment_d87nn"]
+background_mode = 2
+sky = SubResource("Sky_3dqay")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gw3b"]
+albedo_color = Color(6.497651e-07, 0.34497896, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m8gg0"]
+material = SubResource("StandardMaterial3D_0gw3b")
+size = Vector2(50, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3iv54"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="BrushGame" type="Node3D" unique_id=1296166033]
+script = ExtResource("1_3iv54")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=424462699]
+environment = SubResource("Environment_d87nn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1992193706]
+transform = Transform3D(0.8791894, 0.34277257, -0.3309582, 0.10199007, 0.5431162, 0.8334404, 0.4654292, -0.7665062, 0.44254252, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Plane" type="MeshInstance3D" parent="." unique_id=1270698246]
+mesh = SubResource("PlaneMesh_m8gg0")
+
+[node name="TallGrass" type="MultiMeshInstance3D" parent="." unique_id=1098727959]
+multimesh = ExtResource("1_m8yhw")
+
+[node name="TallGrassSource" type="MeshInstance3D" parent="TallGrass" unique_id=1864576797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76829004, 0, 1.6134694)
+visible = false
+mesh = ExtResource("1_m8gg0")
+
+[node name="ShortGrass" type="MultiMeshInstance3D" parent="." unique_id=929246679]
+multimesh = ExtResource("3_xhtp5")
+
+[node name="ShortGrassSource" type="MeshInstance3D" parent="ShortGrass" unique_id=1995700616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+visible = false
+mesh = ExtResource("2_3dqay")
+
+[node name="TouchCamera" parent="." unique_id=551849823 instance=ExtResource("6_5ke1k")]
+transform = Transform3D(0.4038251, 0.30566448, -0.8622613, 0.011412211, 0.9407743, 0.33884138, 0.91476506, -0.14667296, 0.37641996, -1.1925368, 1.819098, 0.95875317)
+
+[node name="Brush" type="MeshInstance3D" parent="." unique_id=659115929]
+mesh = SubResource("BoxMesh_3iv54")
+
+[node name="horse" parent="." unique_id=209941297 instance=ExtResource("6_xhtp5")]

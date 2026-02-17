@@ -1,0 +1,5 @@
+"Horse Rigged(Game Ready)" (https://skfb.ly/p8wzz) by abhayexe is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+https://stayathomedev.itch.io/stylized-grass-shader (optional)
+
+https://godotshaders.com/shader/enchanced-team-fortress-2-shader/

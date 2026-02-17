@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cegtv7yh4oytm"]
+
+[ext_resource type="Script" uid="uid://crsvx1bb322an" path="res://Brush Game/touch_camera.gd" id="1_3cyny"]
+
+[node name="TouchCamera" type="Camera3D" unique_id=551849823]
+transform = Transform3D(0.40382507, 0.30566445, -0.86226135, 0.011412211, 0.9407743, 0.33884138, 0.9147651, -0.14667293, 0.37641993, 0, 0, 0)
+fov = 59.7
+script = ExtResource("1_3cyny")
+
+[node name="TouchCast" type="RayCast3D" parent="." unique_id=304024280]
+target_position = Vector3(0, 0, -20)
+debug_shape_thickness = 1
