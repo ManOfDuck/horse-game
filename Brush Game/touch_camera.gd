@@ -7,7 +7,11 @@ class_name TouchCamera extends Camera3D
 var current_touch: Vector2 = Vector2(-INF, -INF)
 var target_touch: Vector2 = Vector2(-INF, -INF)
 
-var is_touch_valid: bool = touch_cast.is_colliding() if touch_cast else false
+var is_touch_active: bool = false
+
+var is_touch_valid: bool:
+	get:
+		return touch_cast.is_colliding() if touch_cast else false
 
 var touch_position: Vector3 = Vector3(0, 0, 0):
 	get:
@@ -23,7 +27,9 @@ var touch_normal: Vector3 = Vector3(0, 0, 0):
 		else:
 			return touch_normal
 
-var touched_object: Object = touch_cast.get_collider() if touch_cast else null
+var touched_object: Object:
+	get:
+		return touch_cast.get_collider() if touch_cast else null
 
 func _physics_process(delta: float) -> void:
 	if target_touch == Vector2(-INF, -INF):
@@ -40,6 +46,18 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventScreenDrag:
-		target_touch = event.position
+		_handle_touch(event.position)
 	elif event is InputEventScreenTouch:
-		target_touch = event.position
+		_handle_touch(event.position)
+		if event.is_released():
+			is_touch_active = false
+
+
+func _handle_touch(screen_pos: Vector2) -> void:
+	target_touch = screen_pos
+	is_touch_active = true
+	#$TouchExpireTimer.start()
+
+
+func _on_touch_expire_timer_timeout() -> void:
+	is_touch_active = false

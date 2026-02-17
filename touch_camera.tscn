@@ -10,3 +10,8 @@ script = ExtResource("1_3cyny")
 [node name="TouchCast" type="RayCast3D" parent="." unique_id=304024280]
 target_position = Vector3(0, 0, -20)
 debug_shape_thickness = 1
+
+[node name="TouchExpireTimer" type="Timer" parent="." unique_id=277635996]
+wait_time = 0.1
+
+[connection signal="timeout" from="TouchExpireTimer" to="." method="_on_touch_expire_timer_timeout"]

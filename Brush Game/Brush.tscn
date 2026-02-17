@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://tiu0d2rhcn7g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cobgm"]
+albedo_color = Color(0.31398562, 0.18134049, 0, 1)
+metallic = 0.34
+roughness = 0.62
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u7du6"]
+material = SubResource("StandardMaterial3D_cobgm")
+
+[sub_resource type="Gradient" id="Gradient_abypg"]
+offsets = PackedFloat32Array(0, 0.041322313, 0.06965762, 0.094451, 0.12514758, 0.15348288, 0.19598584, 0.23022433, 0.27272728, 0.3270366, 0.3494687, 0.3931523, 0.42975205, 0.51121604, 0.55726093, 0.6162928, 0.64580876, 0.6729634, 0.7201889, 0.7756789, 0.83116883, 0.89846516, 0.9409681, 0.9787485, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hkjjg"]
+gradient = SubResource("Gradient_abypg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_orpua"]
+albedo_color = Color(1, 0.837285, 0.5930797, 1)
+metallic_specular = 0.0
+normal_enabled = true
+normal_texture = SubResource("GradientTexture2D_hkjjg")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hllcb"]
+material = SubResource("StandardMaterial3D_orpua")
+top_radius = 0.48
+bottom_radius = 0.6
+height = 2.611
+
+[node name="Brush" type="Node3D" unique_id=1061412043]
+
+[node name="RootNode" type="Node3D" parent="." unique_id=264439061]
+transform = Transform3D(1.851249e-29, 4.3711378e-08, -0.9999999, 0.9999999, -3.5527137e-15, 1.5529405e-22, -4.2351647e-22, -1, -4.3711385e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RootNode" unique_id=25151728]
+transform = Transform3D(1.6958194, 0, 0, 0, 0.119771875, 0, 0, 0, 1, 0, 0.43128085, 0)
+mesh = SubResource("CylinderMesh_u7du6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RootNode" unique_id=1291923680]
+transform = Transform3D(1.5606912, 0, 0, 0, 0.12812594, 0, 0, 0, 0.92031693, 0, 0.21138334, 0)
+mesh = SubResource("CylinderMesh_hllcb")
