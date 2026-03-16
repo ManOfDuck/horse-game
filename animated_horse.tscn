@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dg5j7csjxkuiy"]
 
-[ext_resource type="PackedScene" uid="uid://32yc30e1oe6o" path="res://AnimatedHorse.glb" id="1_oycmx"]
+[ext_resource type="PackedScene" uid="uid://32yc30e1oe6o" path="res://Horse/AnimatedHorse.glb" id="1_oycmx"]
 [ext_resource type="Shader" uid="uid://drak0g2f2f7lf" path="res://horse-riggedgame-ready/toon_shader.gdshader" id="2_ekmr8"]
 [ext_resource type="Texture2D" uid="uid://buk3kv0ustwvj" path="res://horse-riggedgame-ready/source/horse_5f03786d6e594e479aafeb7c97976ac0_RGB_horse.png" id="3_rfsul"]
 
@@ -19,7 +19,19 @@ shader_parameter/enable_rim_lighting = true
 shader_parameter/rim_strength = 0.00400000019
 shader_parameter/rim_spread = 6.0
 
-[node name="AnimatedHorse" unique_id=388470232 instance=ExtResource("1_oycmx")]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_oycmx"]
+graph_offset = Vector2(-275.99484, 24.293314)
 
-[node name="horse_horse_mat_0" parent="79c96a48e2fc4d1484245007d22741b0_fbx/RootNode/Skeleton/Skeleton3D" parent_id_path=PackedInt32Array(1684590126) index="0" unique_id=513378099]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ekmr8"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_oycmx")
+states/BlendTree/position = Vector2(430, 110)
+states/Start/position = Vector2(268, 111.48148)
+
+[node name="AnimatedHorse" unique_id=1161914942 instance=ExtResource("1_oycmx")]
+
+[node name="horse_horse_mat_0" parent="79c96a48e2fc4d1484245007d22741b0_fbx/RootNode/Skeleton/Skeleton3D" parent_id_path=PackedInt32Array(1088033110) index="0" unique_id=1696588984]
 surface_material_override/0 = SubResource("ShaderMaterial_i2ofk")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=425822526]
+tree_root = SubResource("AnimationNodeStateMachine_ekmr8")
+anim_player = NodePath("../AnimationPlayer")
