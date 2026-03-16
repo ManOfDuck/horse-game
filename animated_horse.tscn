@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dg5j7csjxkuiy"]
+
+[ext_resource type="PackedScene" uid="uid://32yc30e1oe6o" path="res://AnimatedHorse.glb" id="1_oycmx"]
+[ext_resource type="Shader" uid="uid://drak0g2f2f7lf" path="res://horse-riggedgame-ready/toon_shader.gdshader" id="2_ekmr8"]
+[ext_resource type="Texture2D" uid="uid://buk3kv0ustwvj" path="res://horse-riggedgame-ready/source/horse_5f03786d6e594e479aafeb7c97976ac0_RGB_horse.png" id="3_rfsul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2ofk"]
+render_priority = 0
+shader = ExtResource("2_ekmr8")
+shader_parameter/diffuse_texture = ExtResource("3_rfsul")
+shader_parameter/enable_part_color = true
+shader_parameter/part_color_threshold = 0.5
+shader_parameter/part_color = Color(1, 1, 1, 1)
+shader_parameter/overlay_color = Color(1, 0.68974483, 0.59206754, 1)
+shader_parameter/normal_strength = 1.0
+shader_parameter/phong = 0.25
+shader_parameter/phong_exponent = 0.25
+shader_parameter/enable_rim_lighting = true
+shader_parameter/rim_strength = 0.00400000019
+shader_parameter/rim_spread = 6.0
+
+[node name="AnimatedHorse" unique_id=388470232 instance=ExtResource("1_oycmx")]
+
+[node name="horse_horse_mat_0" parent="79c96a48e2fc4d1484245007d22741b0_fbx/RootNode/Skeleton/Skeleton3D" parent_id_path=PackedInt32Array(1684590126) index="0" unique_id=513378099]
+surface_material_override/0 = SubResource("ShaderMaterial_i2ofk")
