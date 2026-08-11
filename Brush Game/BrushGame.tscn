@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://r2imjo7o2734" path="res://Art/Grass/grass2.res" id="2_3dqay"]
 [ext_resource type="MultiMesh" uid="uid://b2dlxmdqsigyx" path="res://Brush Game/short_grass_multimesh.tres" id="3_xhtp5"]
 [ext_resource type="PackedScene" uid="uid://cegtv7yh4oytm" path="res://touch_camera.tscn" id="6_5ke1k"]
-[ext_resource type="PackedScene" uid="uid://dxwa5qsserbbt" path="res://Brush Game/horse.tscn" id="6_xhtp5"]
+[ext_resource type="PackedScene" uid="uid://dgd26vgn6halr" path="res://Horse/the_horse.tscn" id="8_0xq75"]
 [ext_resource type="PackedScene" uid="uid://tiu0d2rhcn7g" path="res://Brush Game/Brush.tscn" id="8_tmv5m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8gg0"]
@@ -62,7 +62,7 @@ mesh = ExtResource("2_3dqay")
 transform = Transform3D(0.4038251, 0.30566448, -0.8622613, 0.011412211, 0.9407743, 0.33884138, 0.91476506, -0.14667296, 0.37641996, -1.1925368, 1.819098, 0.95875317)
 max_speed = -1.0
 
-[node name="horse" parent="." unique_id=209941297 instance=ExtResource("6_xhtp5")]
+[node name="animated-horse" parent="." unique_id=66417839 instance=ExtResource("8_0xq75")]
 
 [node name="Brush" parent="." unique_id=1061412043 instance=ExtResource("8_tmv5m")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
