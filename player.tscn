@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://b15pulmvpw254"]
+
+[ext_resource type="Script" uid="uid://14ra1dk1wns5" path="res://player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_i3pqv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7t30c"]
+radius = 0.35302734
+height = 1.4477539
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3pqv"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7t30c"]
+material = SubResource("StandardMaterial3D_i3pqv")
+radius = 0.3544922
+height = 1.449707
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqtel"]
+albedo_color = Color(1, 0.72156864, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sh265"]
+material = SubResource("StandardMaterial3D_hqtel")
+size = Vector3(0.4503708, 0.23132324, 0.22180176)
+
+[sub_resource type="Resource" id="Resource_hqtel"]
+script = ExtResource("2_i3pqv")
+
+[node name="Player" type="CharacterBody3D" unique_id=186086680]
+script = ExtResource("1_i3pqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1590535317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70927477, 0)
+shape = SubResource("CapsuleShape3D_7t30c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1774167367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71025133, 0)
+mesh = SubResource("CapsuleMesh_7t30c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1255385913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0048103333, 0.33040512, 0.3088916)
+mesh = SubResource("BoxMesh_sh265")
+
+[node name="ThirdPersonCamera" type="Node3D" parent="." unique_id=276037546 node_paths=PackedStringArray("follow_target")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.6002662, -1.7556956)
+script = ExtResource("1_onrkg")
+follow_mode = 6
+follow_target = NodePath("..")
+tween_resource = SubResource("Resource_hqtel")
+follow_offset = Vector3(0, 1, 0)
+follow_distance = 3.0
+spring_length = 3.0
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"

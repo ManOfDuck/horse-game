@@ -7,6 +7,7 @@ uniform float part_color_threshold : hint_range(0.0, 1.0) = 0.5;
 uniform vec3 part_color : source_color = vec3(1.0, 1.0, 1.0);
 uniform vec3 overlay_color : source_color = vec3(1.0, 1.0, 1.0);
 uniform sampler2D lightwarp : source_color, filter_linear, repeat_disable;
+uniform float alpha = 1.0;
 
 group_uniforms Normal;
 uniform sampler2D normal_texture : hint_normal, filter_linear_mipmap;
@@ -59,6 +60,7 @@ void fragment() {
 	
 	NORMAL_MAP = texture(normal_texture, UV).rgb;
 	NORMAL_MAP_DEPTH = normal_strength;
+	//ALPHA = alpha;
 }
 
 

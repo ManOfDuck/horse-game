@@ -7,6 +7,7 @@
 [ext_resource type="MultiMesh" uid="uid://b2dlxmdqsigyx" path="res://Brush Game/short_grass_multimesh.tres" id="3_xhtp5"]
 [ext_resource type="PackedScene" uid="uid://cegtv7yh4oytm" path="res://touch_camera.tscn" id="6_5ke1k"]
 [ext_resource type="PackedScene" uid="uid://dgd26vgn6halr" path="res://Horse/the_horse.tscn" id="8_0xq75"]
+[ext_resource type="PackedScene" uid="uid://b15pulmvpw254" path="res://player.tscn" id="8_ocajm"]
 [ext_resource type="PackedScene" uid="uid://tiu0d2rhcn7g" path="res://Brush Game/Brush.tscn" id="8_tmv5m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m8gg0"]
@@ -28,6 +29,8 @@ albedo_color = Color(6.497651e-07, 0.34497896, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_m8gg0"]
 material = SubResource("StandardMaterial3D_0gw3b")
 size = Vector2(50, 50)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7t30c"]
 
 [node name="BrushGame" type="Node3D" unique_id=1296166033]
 script = ExtResource("1_3iv54")
@@ -59,10 +62,20 @@ visible = false
 mesh = ExtResource("2_3dqay")
 
 [node name="TouchCamera" parent="." unique_id=551849823 instance=ExtResource("6_5ke1k")]
-transform = Transform3D(0.4038251, 0.30566448, -0.8622613, 0.011412211, 0.9407743, 0.33884138, 0.91476506, -0.14667296, 0.37641996, -1.1925368, 1.819098, 0.95875317)
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01, -4.653075)
+top_level = true
 max_speed = -1.0
 
 [node name="animated-horse" parent="." unique_id=66417839 instance=ExtResource("8_0xq75")]
 
+[node name="Player" parent="." unique_id=186086680 instance=ExtResource("8_ocajm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.7830753)
+
 [node name="Brush" parent="." unique_id=1061412043 instance=ExtResource("8_tmv5m")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=2021555239]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=2042207367]
+shape = SubResource("WorldBoundaryShape3D_7t30c")
